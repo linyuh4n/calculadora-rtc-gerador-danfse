@@ -33,9 +33,9 @@ type Env struct {
 }
 
 func (e *Env) Carregar() error {
-	port, err := envInt("SERVER_PORT", 8080)
+	port, err := envInt("PORT", 8080)
 	if err != nil {
-		return err
+		port, err = envInt("SERVER_PORT", 8080)
 	}
 
 	maxXMLSize, err := envInt("XML_MAX_SIZE_BYTES", service.MaxXMLInputSize)
